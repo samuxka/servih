@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Page } from "./types";
 import { Navbar } from "./components/Navbar";
 import { HomePage } from "./pages/HomePage";
@@ -25,6 +26,7 @@ export default function App() {
       ) : (
         <ContactPage />
       )}
+      <SpeedInsights />
     </div>
   );
 }
