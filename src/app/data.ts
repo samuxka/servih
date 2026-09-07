@@ -4,8 +4,8 @@ import { Product, Feature } from "./types";
 export const PRODUCTS: Product[] = [
   {
     id: 1,
-    name: "Travesseiro",
-    category: "Quarto",
+    name: "Yume Cloud",
+    category: "Bem estar",
     price: "200",
     badge: "Mais vendido",
     img: "https://res.cloudinary.com/dtxa1leih/image/upload/v1787693398/travesseiro_gbg9gv.png",
