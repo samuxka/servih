@@ -19,7 +19,7 @@ export function HomePage({ setPage }: { setPage: (p: Page) => void }) {
               Elegância para o lar,
             </h1>
             <h1 className="font-heading text-5xl sm:text-6xl lg:text-[3.6rem] font-bold text-foreground leading-[1.05] mb-7">
-              Proposito para vida
+              Propósito para vida
             </h1>
             <p className="text-foreground/55 text-lg leading-relaxed max-w-md mb-10 font-sans">
              Sua casa merece utensílios de qualidade, feitos com cuidado e atenção aos detalhes. Descubra a coleção Servih e transforme sua casa em um espaço de inspiração e criatividade.
