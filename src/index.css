@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #fdfbf7;
+    --foreground: #2d2613;
+    --card: #f9f5e8;
+    --card-foreground: #2d2613;
+    --primary: #daab21;
+    --primary-dark: #b58912;
+    --primary-foreground: #2d2613;
+    --secondary: #fef08a;
+    --muted: #f5efe0;
+    --muted-foreground: #786b4c;
+    --accent: #facc15;
+    --border: rgba(218, 171, 33, 0.22);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', 'DM Sans', system-ui, -apple-system, sans-serif;
+    background-color: #fdfbf7;
+    color: #2d2613;
+  }
+
+  body {
+    background-color: #fdfbf7;
+    color: #2d2613;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom vertical slice keyframes & smooth utilities */
+@keyframes sliceReveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    transform: scale(1.08);
+    filter: blur(6px);
+  }
+  100% {
+    clip-path: inset(0 0% 0 0);
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes textBlurIn {
+  0% {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  70% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}
+
+.animate-slice-reveal {
+  animation: sliceReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-text-blur-in {
+  animation: textBlurIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hotspot-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  border: 2px solid #facc15;
+  animation: pulseRing 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+/* Hide scrollbars on custom horizontal carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
