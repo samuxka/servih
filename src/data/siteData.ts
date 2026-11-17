@@ -468,7 +468,7 @@ export const CATEGORIES: CategoryItem[] = [
     countPt: 'Dubai, Napolitano & Doblo',
     countEn: 'Dubai, Napolitano & Doblo',
     image:
-      'https://images.unsplash.com/photo-1584990347449-a2d4c2c044c9?auto=format&fit=crop&w=1000&q=85',
+      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1400&q=85',
     span: 'narrow',
   },
   {

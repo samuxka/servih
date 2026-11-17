@@ -26,6 +26,15 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
           <img
             src={cat.image}
             alt={lang === 'pt' ? cat.namePt : cat.nameEn}
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (!target.dataset.fallback) {
+                target.dataset.fallback = 'true';
+                target.src = '/dubai/Dubai_13_Rose/01_cacarola_20cm.png';
+                target.className =
+                  'w-full h-full object-contain p-6 sm:p-10 group-hover:scale-105 transition-transform duration-700 ease-out bg-[#f5efe1]';
+              }
+            }}
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
           />
 
