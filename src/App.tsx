@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { ShoppingCart, Globe } from 'lucide-react';
-import { CategoryItem, Language, ProductItem } from './data/siteData';
+import { ShoppingCart, Globe, ChevronDown, ArrowRight } from 'lucide-react';
+import { CATEGORIES, CategoryItem, Language, ProductItem } from './data/siteData';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
 import { CategoriesSection } from './components/CategoriesSection';
 import { ProductsCarousel } from './components/ProductsCarousel';
-import { AiRoomShowcase } from './components/AiRoomShowcase';
 import { FaqSection } from './components/FaqSection';
 import { CtaFooterSection } from './components/CtaFooterSection';
 import { CatalogPage } from './components/CatalogPage';
@@ -109,18 +108,42 @@ export function App() {
                 >
                   {lang === 'pt' ? 'Sobre' : 'About'}
                 </a>
-                <a
-                  href="#categories"
-                  className="hover:text-[#b58912] transition-colors"
-                >
-                  {lang === 'pt' ? 'Categorias' : 'Categories'}
-                </a>
-                <a
-                  href="#products"
-                  className="hover:text-[#b58912] transition-colors"
-                >
-                  {lang === 'pt' ? 'Produtos' : 'Product'}
-                </a>
+
+                {/* Dropdown Categorias na Sticky Nav */}
+                <div className="relative group py-1">
+                  <a
+                    href="#categories"
+                    className="inline-flex items-center gap-1 hover:text-[#b58912] transition-colors cursor-pointer"
+                  >
+                    <span>{lang === 'pt' ? 'Categorias' : 'Categories'}</span>
+                    <ChevronDown className="w-3 h-3 transition-transform duration-200 group-hover:rotate-180 text-[#2d2613]/60 group-hover:text-[#b58912]" />
+                  </a>
+
+                  {/* Dropdown Menu Container */}
+                  <div className="absolute top-full left-0 pt-2 opacity-0 -translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50 min-w-[250px]">
+                    <div className="bg-[#fdfbf7]/98 backdrop-blur-xl border border-[#daab21]/30 rounded-2xl p-2 shadow-2xl space-y-1">
+                      {CATEGORIES.map((cat) => (
+                        <a
+                          key={cat.id}
+                          href="#categories"
+                          onClick={() => handleSelectCategory(cat)}
+                          className="flex items-center justify-between px-3.5 py-2.5 rounded-xl hover:bg-[#daab21]/15 text-[#2d2613] hover:text-[#b58912] transition-colors group/item"
+                        >
+                          <div className="flex flex-col">
+                            <span className="text-xs font-semibold">
+                              {lang === 'pt' ? cat.namePt : cat.nameEn}
+                            </span>
+                            <span className="text-[10px] text-[#786b4c]">
+                              {lang === 'pt' ? cat.countPt : cat.countEn}
+                            </span>
+                          </div>
+                          <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-[#b58912]" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
                 <button
                   onClick={() => setCurrentPage('catalog')}
                   className="hover:text-[#b58912] transition-colors cursor-pointer"
@@ -189,6 +212,7 @@ export function App() {
             cartCount={totalCartItems}
             onOpenCart={() => setIsCartOpen(true)}
             onOpenStory={() => setIsStoryOpen(true)}
+            onSelectCategory={handleSelectCategory}
           />
 
           {/* 2. About Us Section with Word-by-Word Scroll Reveal & Animated Counters */}
@@ -210,17 +234,10 @@ export function App() {
             onOpenCatalog={() => setCurrentPage('catalog')}
           />
 
-          {/* 5. Interactive "Servih AI ✦" Room Hotspot Showcase */}
-          <AiRoomShowcase
-            lang={lang}
-            onAddToCart={handleAddToCart}
-            onSelectProduct={(p) => setSelectedProduct(p)}
-          />
-
-          {/* 6. FAQ Accordion Section with Blur-to-Clear Scroll Reveal */}
+          {/* 5. FAQ Accordion Section with Blur-to-Clear Scroll Reveal */}
           <FaqSection lang={lang} />
 
-          {/* 7. Pre-Footer CTA Banner & Dark Servih Footer */}
+          {/* 6. Pre-Footer CTA Banner & Dark Servih Footer */}
           <CtaFooterSection
             lang={lang}
             onOpenStory={() => setIsStoryOpen(true)}

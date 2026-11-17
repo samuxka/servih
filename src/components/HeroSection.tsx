@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, ShoppingCart, User, Globe } from 'lucide-react';
-import { HERO_SLIDES, Language } from '../data/siteData';
+import { ArrowRight, ShoppingCart, User, Globe, ChevronDown } from 'lucide-react';
+import { HERO_SLIDES, Language, CATEGORIES, CategoryItem } from '../data/siteData';
 
 interface HeroSectionProps {
   lang: Language;
@@ -8,6 +8,7 @@ interface HeroSectionProps {
   cartCount: number;
   onOpenCart: () => void;
   onOpenStory: () => void;
+  onSelectCategory?: (cat: CategoryItem) => void;
 }
 
 const SLICE_COUNT = 8;
@@ -19,6 +20,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   cartCount,
   onOpenCart,
   onOpenStory,
+  onSelectCategory,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
@@ -138,18 +140,46 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             >
               {lang === 'pt' ? 'Sobre' : 'About'}
             </a>
-            <a
-              href="#products"
-              className="hover:text-[#facc15] transition-colors duration-200"
-            >
-              {lang === 'pt' ? 'Produtos' : 'Product'}
-            </a>
-            <a
-              href="#categories"
-              className="hover:text-[#facc15] transition-colors duration-200"
-            >
-              {lang === 'pt' ? 'Categorias' : 'Categories'}
-            </a>
+
+            {/* Dropdown Categorias */}
+            <div className="relative group py-2">
+              <a
+                href="#categories"
+                className="inline-flex items-center gap-1.5 hover:text-[#facc15] transition-colors duration-200 cursor-pointer"
+              >
+                <span>{lang === 'pt' ? 'Categorias' : 'Categories'}</span>
+                <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 text-white/70 group-hover:text-[#facc15]" />
+              </a>
+
+              {/* Dropdown Menu Container */}
+              <div className="absolute top-full left-0 pt-2 opacity-0 -translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50 min-w-[260px]">
+                <div className="bg-[#1c160b]/95 backdrop-blur-xl border border-[#daab21]/30 rounded-2xl p-2.5 shadow-2xl space-y-1">
+                  {CATEGORIES.map((cat) => (
+                    <a
+                      key={cat.id}
+                      href="#categories"
+                      onClick={() => {
+                        if (onSelectCategory) {
+                          onSelectCategory(cat);
+                        }
+                      }}
+                      className="flex items-center justify-between px-3.5 py-2.5 rounded-xl hover:bg-white/10 text-white/90 hover:text-[#facc15] transition-colors group/item"
+                    >
+                      <div className="flex flex-col">
+                        <span className="text-xs font-semibold">
+                          {lang === 'pt' ? cat.namePt : cat.nameEn}
+                        </span>
+                        <span className="text-[10.5px] text-[#fef08a]/60">
+                          {lang === 'pt' ? cat.countPt : cat.countEn}
+                        </span>
+                      </div>
+                      <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-[#facc15]" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             <a
               href="#faq"
               className="hover:text-[#facc15] transition-colors duration-200"
@@ -166,10 +196,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Mobile Left Menu Pill */}
           <a
-            href="#products"
+            href="#categories"
             className="md:hidden text-xs font-medium text-white/90 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-full border border-white/15"
           >
-            {lang === 'pt' ? 'Explorar' : 'Explore'}
+            {lang === 'pt' ? 'Categorias' : 'Categories'}
           </a>
 
           {/* Center Brand Logo — Mathematically centered relative to the page */}

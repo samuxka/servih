@@ -472,16 +472,6 @@ export const CATEGORIES: CategoryItem[] = [
     span: 'narrow',
   },
   {
-    id: 'bakeware',
-    namePt: 'Assadeiras & Cerâmica',
-    nameEn: 'Bakeware',
-    countPt: 'Forno & Mesa',
-    countEn: 'Oven & Table',
-    image:
-      'https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=1400&q=85',
-    span: 'wide',
-  },
-  {
     id: 'essentials',
     namePt: 'Essenciais & Organização',
     nameEn: 'Kitchen Essentials',
@@ -490,16 +480,6 @@ export const CATEGORIES: CategoryItem[] = [
     image:
       'https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?auto=format&fit=crop&w=1400&q=85',
     span: 'wide',
-  },
-  {
-    id: 'tableware',
-    namePt: 'Mesa Posta & Conforto',
-    nameEn: 'Tableware & Comfort',
-    countPt: 'Louças & BeeConfort',
-    countEn: 'Tableware & BeeConfort',
-    image:
-      'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?auto=format&fit=crop&w=1000&q=85',
-    span: 'narrow',
   },
 ];
 
@@ -656,8 +636,8 @@ export const PRODUCTS: ProductItem[] = [
     id: 4,
     namePt: 'Travesseiro Ergonômico BeeConfort',
     nameEn: 'BeeConfort Ergonomic Pillow',
-    categoryPt: 'Mesa Posta & Conforto',
-    categoryEn: 'Tableware & Comfort',
+    categoryPt: 'Essenciais & Organização',
+    categoryEn: 'Kitchen Essentials',
     pricePt: 'R$ 200,00',
     oldPricePt: 'R$ 240,00',
     priceEn: '$39.00',
@@ -692,8 +672,8 @@ export const PRODUCTS: ProductItem[] = [
     id: 6,
     namePt: 'Travessa Oval Cerâmica Artesanal',
     nameEn: 'Kulina Terra Oval Ceramic Platter',
-    categoryPt: 'Mesa Posta & Conforto',
-    categoryEn: 'Tableware & Comfort',
+    categoryPt: 'Essenciais & Organização',
+    categoryEn: 'Kitchen Essentials',
     pricePt: 'R$ 120,00',
     priceEn: '$12.00',
     badge: 'SOLD_OUT',
@@ -708,8 +688,8 @@ export const PRODUCTS: ProductItem[] = [
     id: 7,
     namePt: 'Assadeira Cerâmica Servih Terra',
     nameEn: 'Kulina Terra Ceramic Baker',
-    categoryPt: 'Assadeiras & Cerâmica',
-    categoryEn: 'Bakeware',
+    categoryPt: 'Panelas & Cozinha',
+    categoryEn: 'Cookware',
     pricePt: 'R$ 120,00',
     priceEn: '$12.00',
     image:

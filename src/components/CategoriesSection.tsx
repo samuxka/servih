@@ -12,9 +12,6 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
   lang,
   onSelectCategory,
 }) => {
-  const row1 = CATEGORIES.slice(0, 2); // narrow + wide
-  const row2 = CATEGORIES.slice(2, 4); // wide + narrow
-
   const renderCard = (cat: CategoryItem, colClass: string, delay: number) => (
     <ScrollBlurReveal
       key={cat.id}
@@ -65,16 +62,9 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
         </div>
       </ScrollBlurReveal>
 
-      {/* Row 1: Narrow (5 cols) + Wide (7 cols) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
-        {renderCard(row1[0], 'lg:col-span-4', 0)}
-        {renderCard(row1[1], 'lg:col-span-8', 100)}
-      </div>
-
-      {/* Row 2: Wide (7 cols) + Narrow (5 cols) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {renderCard(row2[0], 'lg:col-span-8', 0)}
-        {renderCard(row2[1], 'lg:col-span-4', 100)}
+      {/* Categories Grid (2 Columns) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        {CATEGORIES.map((cat, idx) => renderCard(cat, 'w-full', idx * 100))}
       </div>
     </section>
   );
